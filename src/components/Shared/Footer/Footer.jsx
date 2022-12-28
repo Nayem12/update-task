@@ -17,9 +17,9 @@ const Footer = () => {
         </p>
 
         <div className='flex -mx-2'>
-          
+
           <a
-            href='https://www.facebook.com/sarwarhridoy4/'rel="noreferrer"target='_blank'
+            href='https://www.facebook.com/shanayem/' rel="noreferrer" target='_blank'
             className='mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400'
             aria-label='Facebook'
           >
@@ -34,7 +34,7 @@ const Footer = () => {
           </a>
 
           <a
-            href='https://github.com/Sarwarhridoy4'rel="noreferrer"target='_blank'
+            href='https://github.com/Nayem12' rel="noreferrer" target='_blank'
             className='mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400'
             aria-label='Github'
           >
