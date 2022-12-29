@@ -89,7 +89,7 @@ const MyTask = () => {
     return (
         <div>
             <section className='bg-white dark:bg-gray-900'>
-                <div className="mb-1 items-center text-xl font-medium text-white">
+                <div className="mb-1 items-center text-xl font-medium text-black dark:text-white">
                     {
                         user?.email && <p>Welcome, {user?.email}</p>
                     }
@@ -98,7 +98,7 @@ const MyTask = () => {
                     <div className="max-w-sm">
                         {
                             tasks?.filter(data => data.isCompleted !== true).map(task =>
-                                <Card className='mt-2'>
+                                <Card className='mt-2 bg-neutral-500'>
 
                                     <div className="flex flex-col items-center pb-10">
 

@@ -24,7 +24,7 @@ const Header = () => {
   return (
     <>
       <Navbar
-        className="bg-white shadow dark:bg-gray-800"
+        className="bg-orange-500 shadow dark:bg-gray-800"
         fluid={true}
         rounded={true}
       >
