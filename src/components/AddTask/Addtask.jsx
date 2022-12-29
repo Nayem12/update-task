@@ -29,7 +29,7 @@ const Addtask = () => {
       .then(imgdata => {
         if (imgdata.success || !imgdata.success) {
           const taskdetails = { task, taskDescription, imgdata, email: user?.email, isCompleted: false }
-          fetch(`http://localhost:5000/task`, {
+          fetch(`https://taskey-server.vercel.app/task`, {
             method: "POST",
             headers: {
               "content-type": "application/json"
@@ -57,7 +57,7 @@ const Addtask = () => {
     const addTask = { task }
 
     if (event.key === "Enter") {
-      fetch(`http://localhost:5000/task`, {
+      fetch(`https://taskey-server.vercel.app/task`, {
         method: "POST",
         headers: {
           "content-type": "application/json"

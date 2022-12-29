@@ -7,9 +7,9 @@ import Home from "../../Home/Home";
 // import ComplpletedTask from "../../CompletedTask/CompletedTask";
 import Login from "../../Login/Login";
 import SignUp from "../../SignUp/SignUp";
-import Loading from "../../Loading/Loading";
 import MyTask from "../../MyTask/MyTask";
 import CompletedTask from "../../CompletedTask/CompletedTask";
+import MyMedia from "../../MyMedia/MyMedia";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -33,6 +33,10 @@ const router = createBrowserRouter([
                 element: <CompletedTask></CompletedTask>
             },
             {
+                path: "/media",
+                element: <MyMedia></MyMedia>
+            },
+            {
                 path: "/login",
                 element: <Login></Login>
             },
@@ -40,6 +44,7 @@ const router = createBrowserRouter([
                 path: "/signup",
                 element: <SignUp></SignUp>
             },
+
         ]
     }
 ]);

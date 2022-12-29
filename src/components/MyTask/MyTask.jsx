@@ -2,15 +2,16 @@ import { Card, Dropdown } from 'flowbite-react';
 import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { AuthContext } from '../Context/AuthProvider';
+import UpdateTask from '../UpdateTask/UpdateTask';
 
 const MyTask = () => {
     const { user } = useContext(AuthContext)
-
+    const [showEditTask, setShowEditTask] = useState(null)
     const [tasks, setTasks] = useState([])
 
-
+    //
     const fetchData = () => {
-        fetch(`http://localhost:5000/task/${user?.email}`)
+        fetch(`https://taskey-server.vercel.app/task/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)
@@ -24,8 +25,9 @@ const MyTask = () => {
         fetchData()
     }, [user?.email])
 
+    // 
     const handleUpdate = (id) => {
-        fetch(`http://localhost:5000/task/${id}`, {
+        fetch(`https://taskey-server.vercel.app/task/${id}`, {
             method: "PUT"
         })
             .then(res => res.json())
@@ -41,6 +43,29 @@ const MyTask = () => {
             })
             .catch(error => console.error(error))
 
+    }
+    const handleDelete = id => {
+        fetch(`https://taskey-server.vercel.app/task/${id}`, {
+            method: "DELETE"
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                fetchData(data)
+                if (data.acknowledged) {
+                    toast(
+                        'Opps!',
+                        'Task Deleted Successfully',
+                        'success'
+                    )
+
+                }
+            })
+            .catch(err => console.error(err))
+    }
+    const editTask = (task) => {
+        console.log(task)
+        setShowEditTask(task)
     }
     return (
         <div>
@@ -67,12 +92,12 @@ const MyTask = () => {
                                             >
                                                 Details
                                             </button>
-                                            <button
+                                            <button onClick={() => editTask(task)}
                                                 className="inline-flex items-center rounded-lg border border-gray-300 bg-white py-2 px-4 text-center text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
                                             >
                                                 Update Task
                                             </button>
-                                            <button className="inline-flex items-center rounded-lg border border-gray-300 bg-white py-2 px-4 text-center text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-700">Delete Task</button>
+                                            <button onClick={() => handleDelete(task._id)} className="inline-flex items-center rounded-lg border border-gray-300 bg-white py-2 px-4 text-center text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-700">Delete Task</button>
                                         </div>
                                         <div className='d-flex justify-content-center mt-3'>
                                             <button className="inline-flex items-center rounded-lg bg-blue-700 py-2 px-4 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={() => handleUpdate(task._id)}>Completed Task</button>
@@ -83,6 +108,7 @@ const MyTask = () => {
                         }
                     </div>
                 </div>
+                {showEditTask && <UpdateTask task={showEditTask} setShowEditTask={setShowEditTask} />}
             </section>
 
         </div>

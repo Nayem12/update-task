@@ -1,77 +1,78 @@
-.loader {
-  width: 100px;
-  height: 100px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  border-radius: 50%;
-  border-top: 5px solid #e74c3c;
-  position: relative;
-  -webkit-animation: load 2s linear infinite;
-          animation: load 2s linear infinite;
+#loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  z-index: 1;
 }
 
-.loader::before,.loader::after {
-  content: '';
-  width: 100px;
-  height: 100px;
+@keyframes loader-out {
+  100% {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+#loader.loaded {
+  animation: loader-out 0.3s both;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  border: 3px solid;
+  border-color: #4b1e1e #8f1515 transparent transparent;
+  box-sizing: border-box;
+  scale: 1.5;
+  animation: rotation 1s linear infinite;
+}
+
+.loader::after,
+.loader::before {
+  content: "";
+  box-sizing: border-box;
   position: absolute;
   left: 0;
+  right: 0;
   top: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  bottom: 0;
+  margin: auto;
+  border: 3px solid;
+  border-color: transparent transparent #1fdf7f #6d21df;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
+  box-sizing: border-box;
+  animation: rotationBack 0.5s linear infinite;
+  transform-origin: center center;
 }
 
 .loader::before {
-  border-top: 5px solid #e67e22;
-  -webkit-transform: rotate(120deg);
-      -ms-transform: rotate(120deg);
-          transform: rotate(120deg);
+  width: 32px;
+  height: 32px;
+  border-color: #f50519 #8d5f5f transparent transparent;
+  animation: rotation 1.5s linear infinite;
 }
 
-.loader::after {
-  border-top: 5px solid #3498db;
-  -webkit-transform: rotate(240deg);
-      -ms-transform: rotate(240deg);
-          transform: rotate(240deg);
-}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
 
-.loader span {
-  position: absolute;
-  font-size: small;
-  width: 100px;
-  height: 100px;
-  color: #fff;
-  text-align: center;
-  line-height: 100px;
-  -webkit-animation: a2 2s linear infinite;
-          animation: a2 2s linear infinite;
-}
-
-@-webkit-keyframes load {
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+  100% {
+    transform: rotate(360deg);
   }
 }
 
-@keyframes load {
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+@keyframes rotationBack {
+  0% {
+    transform: rotate(0deg);
   }
-}
 
-@-webkit-keyframes a2 {
-  to {
-    -webkit-transform: rotate(-360deg);
-            transform: rotate(-360deg);
-  }
-}
-
-@keyframes a2 {
-  to {
-    -webkit-transform: rotate(-360deg);
-            transform: rotate(-360deg);
+  100% {
+    transform: rotate(-360deg);
   }
 }
