@@ -3,6 +3,7 @@ import { Card, Dropdown } from 'flowbite-react';
 import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { AuthContext } from '../Context/AuthProvider';
+import Spinner from '../Loading/spinner';
 import UpdateTask from '../UpdateTask/UpdateTask';
 
 const MyTask = () => {
@@ -85,6 +86,9 @@ const MyTask = () => {
     const editTask = (task) => {
         console.log(task)
         setShowEditTask(task)
+    }
+    if (isLoading) {
+        return <Spinner />
     }
     return (
         <div>
