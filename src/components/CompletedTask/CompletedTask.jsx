@@ -11,7 +11,7 @@ const CompletedTask = () => {
 
 
     const fetchData = () => {
-        fetch(`http://localhost:5000/task/${user?.email}`)
+        fetch(`https://taskey-server.vercel.app/task/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)
@@ -26,7 +26,7 @@ const CompletedTask = () => {
     }, [user?.email])
 
     const handleNotCompleted = (id) => {
-        fetch(`http://localhost:5000/tasks/${id}`, {
+        fetch(`https://taskey-server.vercel.app/tasks/${id}`, {
             method: "PUT"
         })
             .then(res => res.json())
@@ -47,7 +47,7 @@ const CompletedTask = () => {
         }
 
 
-        fetch(`http://localhost:5000/taskcomment`, {
+        fetch(`https://taskey-server.vercel.app/taskcomment`, {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -68,7 +68,7 @@ const CompletedTask = () => {
             .catch(err => console.error(err))
     }
     const handleDelete = id => {
-        fetch(`http://localhost:5000/task/${id}`, {
+        fetch(`https://taskey-server.vercel.app/task/${id}`, {
             method: "DELETE"
         })
             .then(res => res.json())
