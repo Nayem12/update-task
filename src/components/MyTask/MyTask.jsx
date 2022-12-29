@@ -3,7 +3,8 @@ import { Card, Dropdown } from 'flowbite-react';
 import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { AuthContext } from '../Context/AuthProvider';
-import Spinner from '../Loading/spinner';
+import Spinner from '../Spinner/Spinner';
+// import Spinner from '../Loading/spinner';
 import UpdateTask from '../UpdateTask/UpdateTask';
 
 const MyTask = () => {

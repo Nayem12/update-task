@@ -1,5 +1,5 @@
 import React from 'react';
-import './Loading'
+import './Spinner'
 
 const Spinner = () => {
     return (
