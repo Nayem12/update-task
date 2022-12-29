@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query';
 import { Card, Dropdown } from 'flowbite-react';
 import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
@@ -10,6 +11,24 @@ const MyTask = () => {
     const [tasks, setTasks] = useState([])
 
     //
+    const {
+        data: fetchedData = [],
+        isLoading,
+        refetch,
+    } = useQuery({
+        queryKey: ["fetchedData", user?.email],
+        queryFn: async () => {
+            const res = await fetch(`https://taskey-server.vercel.app/task/${user?.email}`, {
+                headers: {
+                    //   authorization: bearer ${localStorage.getItem("accessToken")},
+                },
+            });
+            const data = await res.json();
+            setTasks(data);
+            refetch();
+            return data;
+        },
+    });
     const fetchData = () => {
         fetch(`https://taskey-server.vercel.app/task/${user?.email}`)
             .then(res => res.json())
@@ -21,9 +40,9 @@ const MyTask = () => {
     }
 
 
-    useEffect(() => {
-        fetchData()
-    }, [user?.email])
+    // useEffect(() => {
+    //     fetchData()
+    // }, [user?.email])
 
     // 
     const handleUpdate = (id) => {
