@@ -67,7 +67,7 @@ const Header = () => {
 
           <Toggle></Toggle>
           {
-            user ? <NavLink to="/login"><button className='btn text-white btn-dark ml-5' onClick={handleLogOut}>Logout</button></NavLink> : <NavLink to="/login"><button className='btn btn-primary ml-5'>Login</button></NavLink>
+            user ? <NavLink to="/login"><button className='btn bg-green-500 p-2 rounded-md text-white btn-dark ml-5' onClick={handleLogOut}>Logout</button></NavLink> : <NavLink to="/login"><button className='btn btn-primary ml-5'>Login</button></NavLink>
           }
         </Navbar.Collapse>
       </Navbar>

@@ -88,9 +88,9 @@ const MyTask = () => {
         console.log(task)
         setShowEditTask(task)
     }
-    if (isLoading) {
-        return <Spinner />
-    }
+    // if (isLoading) {
+    //     return <Spinner />
+    // }
     return (
         <div>
             <section className='bg-white dark:bg-gray-900'>
