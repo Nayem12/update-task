@@ -10,6 +10,7 @@ import SignUp from "../../SignUp/SignUp";
 import MyTask from "../../MyTask/MyTask";
 import CompletedTask from "../../CompletedTask/CompletedTask";
 import MyMedia from "../../MyMedia/MyMedia";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -26,11 +27,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "/my-tasks",
-                element: <MyTask></MyTask>
+                element: <PrivateRoute><MyTask></MyTask></PrivateRoute>
             },
             {
                 path: "/completed-task",
-                element: <CompletedTask></CompletedTask>
+                element: <PrivateRoute><CompletedTask></CompletedTask></PrivateRoute>
             },
             {
                 path: "/media",
