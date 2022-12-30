@@ -11,6 +11,7 @@ import MyTask from "../../MyTask/MyTask";
 import CompletedTask from "../../CompletedTask/CompletedTask";
 import MyMedia from "../../MyMedia/MyMedia";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import TaskDetails from "../../TaskDetails/TaskDetails";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
                 path: "/signup",
                 element: <SignUp></SignUp>
             },
+            {
+                path: '/details',
+                element: <PrivateRoute><TaskDetails></TaskDetails></PrivateRoute>
+            }
 
         ]
     }
